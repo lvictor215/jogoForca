@@ -1,4 +1,5 @@
 from random import randint
+
 # Variáveis
 palavras = ['cabelo', 'pescoço', 'orelha', 'boca', 'nariz']
 palavra_sorteada = ''
