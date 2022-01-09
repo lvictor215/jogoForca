@@ -1,7 +1,9 @@
 from random import randint
 
 # Variáveis
-palavra = 'camisa'
+palavras = ['camisa', 'short', 'tenis',
+            'sapato', 'calça', 'bone', 'meia', 'bermuda']
+palavra = ''
 digitadas = list()
 tentativas = 6
 contador = 0
@@ -27,8 +29,22 @@ def linha(msg='', tamanho=50, caractere='='):
     print(caractere * tamanho)
 
 
+palavra = palavras[randint(0, len(palavras) - 1)]
+
 while tentativas > 0:
 
+    for x in range(0, len(palavra)):
+        flag = 0
+        for y in range(0, len(pronta)):
+            if x == pronta[y]:
+                var += pronta[y - 1]
+                flag = 1
+                var += ' '
+
+        if flag == 0:
+            var += '_ '
+    linha(var)
+    var = ''
     while True:
         linha('Digite uma letra')
         letra = input("Digite a letra desejada: ").strip().lower()[0]
@@ -52,18 +68,6 @@ while tentativas > 0:
 
     digitadas.append(letra)
 
-    for x in range(0, len(palavra)):
-        flag = 0
-        for y in range(0, len(pronta)):
-            if x == pronta[y]:
-                var += pronta[y - 1]
-                flag = 1
-                var += ' '
-
-        if flag == 0:
-            var += '_ '
-    linha(var)
-    var = ''
     if tentativas == 6:
         print('=' * 50)
         print('o'.center(50))
@@ -99,8 +103,3 @@ while tentativas > 0:
     if len(pronta) == len(palavra) * 2:
         print("Você ganhou!")
         break
-
-
-print(digitadas)
-print(pronta)
-5
