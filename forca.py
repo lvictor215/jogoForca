@@ -2,6 +2,8 @@ from random import randint
 
 # Variáveis
 palavra = 'camisa'
+digitadas = list()
+tentativas = 3
 
 # funções
 
@@ -22,12 +24,20 @@ def linha(msg='', tamanho=50, caractere='='):
     print(caractere * tamanho)
 
 
-while True:
+while tentativas > 0:
 
     linha('Digite uma letra')
     letra = input("Digite a letra desejada: ").strip().lower()[0]
 
     if letra in palavra:
+
         linha(f"Encontrada a letra {letra}")
+
     else:
+
         linha(f"Não encontrada a letra {letra}")
+        tentativas -= 1
+
+    digitadas.append(letra)
+    
+print(digitadas)
