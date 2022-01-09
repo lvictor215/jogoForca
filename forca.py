@@ -3,7 +3,7 @@ from random import randint
 # Variáveis
 palavra = 'camisa'
 digitadas = list()
-tentativas = 3
+tentativas = 6
 contador = 0
 var = ''
 pronta = list()
@@ -48,6 +48,7 @@ while tentativas > 0:
 
     else:
         linha(f"Não encontrada a letra {letra}")
+        tentativas -= 1
 
     digitadas.append(letra)
 
@@ -57,17 +58,49 @@ while tentativas > 0:
             if x == pronta[y]:
                 var += pronta[y - 1]
                 flag = 1
+                var += ' '
 
         if flag == 0:
-            var += '_'
+            var += '_ '
     linha(var)
     var = ''
-
+    if tentativas == 6:
+        print('=' * 50)
+        print('o'.center(50))
+        print('-|-'.center(50))
+        print('_ _'.center(50))
+    elif tentativas == 5:
+        print('=' * 50)
+        print('o'.center(50))
+        print('-|-'.center(50))
+        print('_  '.center(50))
+    elif tentativas == 4:
+        print('=' * 50)
+        print('o'.center(50))
+        print('-|-'.center(50))
+        print('   '.center(50))
+    elif tentativas == 3:
+        print('=' * 50)
+        print('o'.center(50))
+        print('-| '.center(50))
+        print(''.center(50))
+    elif tentativas == 2:
+        print('=' * 50)
+        print('o'.center(50))
+        print('|'.center(50))
+        print(''.center(50))
+    elif tentativas == 1:
+        print('=' * 50)
+        print('o'.center(50))
+        print(''.center(50))
+        print(''.center(50))
+    elif tentativas == 0:
+        print("Você perdeu!")
     if len(pronta) == len(palavra) * 2:
         print("Você ganhou!")
         break
-    elif tentativas == 0:
-        print("Você perdeu!")
+
 
 print(digitadas)
 print(pronta)
+5
