@@ -55,19 +55,17 @@ palavra = palavras[randint(0, len(palavras) - 1)]
 
 while tentativas > 0:
 
-    for x in range(0, len(palavra)):
-        flag = 0
-        for y in range(0, len(pronta)):
-            if x == pronta[y]:
-                var += pronta[y - 1]
-                flag = 1
-                var += ' '
+    for letra in palavra:
+        if letra in digitadas:
+            var += letra
+            var += ' '
+        else:
+            var += "_ "
 
-        if flag == 0:
-            var += '_ '
     linha(var)
+    
     var = ''
-
+    
     validar()
 
     while True:
