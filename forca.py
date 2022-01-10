@@ -98,6 +98,6 @@ while tentativas > 0:
         print("A palavra correta era:")
         linha(palavra)
     elif len(pronta) == len(palavra) * 2:
-        print("Você ganhou!")
-        print(f"A palavra era {palavra}")
+        linha("Você ganhou!")
+        linha(f"A palavra era {palavra}")
         break
