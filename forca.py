@@ -8,7 +8,7 @@ digitadas = list()
 tentativas = 6
 contador = 0
 var = ''
-pronta = list()
+pronta = ''
 
 
 def linha(msg='', tamanho=50, caractere='='):
@@ -63,9 +63,18 @@ while tentativas > 0:
             var += "_ "
 
     linha(var)
-    
+    pronta = var
     var = ''
-    
+
+    if tentativas == 0:
+        print("Você perdeu!")
+        print("A palavra correta era:")
+        linha(palavra)
+    elif pronta.replace(' ', '') == palavra:
+        linha("Você ganhou!")
+        linha(f"A palavra era {palavra}")
+        break
+
     validar()
 
     while True:
@@ -76,13 +85,6 @@ while tentativas > 0:
         else:
             linha("Digite uma letra que não tenha sido digitada!")
     if letra in palavra:
-
-        for a, b, in enumerate(palavra):
-            if b == letra:
-                contador += 1
-                pronta.append(b)
-                pronta.append(a)
-
         linha(f"Encontrada a letra {letra}")
 
     else:
@@ -90,12 +92,3 @@ while tentativas > 0:
         tentativas -= 1
 
     digitadas.append(letra)
-
-    if tentativas == 0:
-        print("Você perdeu!")
-        print("A palavra correta era:")
-        linha(palavra)
-    elif len(pronta) == len(palavra) * 2:
-        linha("Você ganhou!")
-        linha(f"A palavra era {palavra}")
-        break
